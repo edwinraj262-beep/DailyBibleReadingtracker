@@ -34,7 +34,7 @@ const BibleReader = ({ toggleFavorite, favorites, initialBook = 'John', initialC
           data = await res.json();
           bibleCache = data;
         }
-        
+
         const bookIndex = BIBLE_BOOKS.findIndex(b => b.english === book);
         if (bookIndex !== -1) {
           const bookData = data.Book[bookIndex];
@@ -80,7 +80,7 @@ const BibleReader = ({ toggleFavorite, favorites, initialBook = 'John', initialC
           </span>
           <ChevronDown size={18} />
         </button>
-        
+
         <div className="header-actions">
           <button className="lang-toggle" onClick={() => setLang(lang === 'en' ? 'ta' : 'en')}>
             <Languages size={18} />
@@ -89,7 +89,7 @@ const BibleReader = ({ toggleFavorite, favorites, initialBook = 'John', initialC
         </div>
       </div>
 
-      <BibleSelector 
+      <BibleSelector
         isOpen={isSelectorOpen}
         onClose={() => setIsSelectorOpen(false)}
         onSelect={handleSelect}
@@ -103,14 +103,14 @@ const BibleReader = ({ toggleFavorite, favorites, initialBook = 'John', initialC
           <div className="loading">Fetching Scripture...</div>
         ) : (
           verses.map((v, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="verse-item clickable"
               onClick={() => setSelectedVerse(v)}
             >
               <span className="v-num">{v.verse}</span>
               <p className={`v-text ${lang === 'ta' ? 'tamil-font' : ''}`}>{v.text}</p>
-              <button 
+              <button
                 className={`v-fav ${isFavorited(v.verse) ? 'active' : ''}`}
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent opening study overlay
@@ -128,7 +128,7 @@ const BibleReader = ({ toggleFavorite, favorites, initialBook = 'John', initialC
         )}
       </div>
 
-      <VerseStudyOverlay 
+      <VerseStudyOverlay
         isOpen={!!selectedVerse}
         onClose={() => setSelectedVerse(null)}
         verse={selectedVerse}
