@@ -1,0 +1,39 @@
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.mobile-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.content-area {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+button.nav-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-family: inherit;
+}
+
+.nav-item span {
+  font-weight: 500;
+}
+
+@media (min-width: 1024px) {
+  .mobile-header {
+    display: none;
+  }
+}
